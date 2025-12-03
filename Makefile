@@ -12,4 +12,11 @@ PKG_VERSION:=1.2.6
 
 include $(TOPDIR)/feeds/luci/luci.mk
 
+define Package/luci-app-tailscale/postinst
+#!/bin/sh
+chmod +x /etc/init.d/tailscale 2>/dev/null
+chmod +x /usr/sbin/tailscale_helper 2>/dev/null
+exit 0
+endef
+
 # call BuildPackage - OpenWrt buildroot signature
